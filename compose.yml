@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  # fuck you spring boot docker compose for ignoring my config
+  mysql:
+    image: mysql:latest
+    hostname: mysql
+    environment:
+      MYSQL_DATABASE: web_check_in
+      MYSQL_ROOT_PASSWORD: web-check-in
+    ports:
+      - "3307:3306"
+  redis:
+    image: redis:latest
+    hostname: redis
+    ports:
+      - "6378:6379"
