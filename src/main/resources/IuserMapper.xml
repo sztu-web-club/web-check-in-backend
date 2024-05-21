@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.github.sztuwebclub.webcheckin.mapper.IuserMapper" >
+    <select id="getuserTask" resultType="io.github.sztuwebclub.webcheckin.pojo.Task">
+        SELECT t.task_id, t.task_name, t.description, ut.is_completed
+        FROM tasks t
+                 JOIN user_tasks ut ON t.task_id = ut.task_id
+        WHERE ut.user_id = #{userId}
+
+    </select>
+</mapper>
