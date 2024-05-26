@@ -1,9 +1,10 @@
+
 import org.apache.tools.ant.taskdefs.condition.Os
 
 plugins {
     java
     `java-library`
-    id("org.springframework.boot") version "3.2.3"
+    id("org.springframework.boot") version "3.2.3" // 检查此版本号是否正确
     id("io.spring.dependency-management") version "1.1.4"
 }
 
@@ -17,7 +18,7 @@ buildscript {
         }
     }
 }
-//全局配置
+
 allprojects {
     repositories {
         maven {
@@ -32,11 +33,11 @@ allprojects {
     }
     tasks.withType<JavaCompile> {
         options.encoding = "utf-8"
-        sourceCompatibility = JavaVersion.VERSION_21.toString()
-        targetCompatibility = JavaVersion.VERSION_21.toString()//java版本
+        sourceCompatibility = JavaVersion.VERSION_19.toString() // 将此行改为正确的Java版本
+        targetCompatibility = JavaVersion.VERSION_19.toString() // 将此行改为正确的Java版本
     }
 }
-//配置所有子项目
+
 subprojects {
     apply(plugin = "java")
 

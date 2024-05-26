@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="io.github.sztuwebclub.webcheckin.mapper.taskMapper">
+
+    <select id="findAll" resultType="io.github.sztuwebclub.webcheckin.pojo.Task">
+        SELECT * FROM tasks
+    </select>
+
+    <select id="findById" parameterType="Long" resultType="io.github.sztuwebclub.webcheckin.model.Task">
+        SELECT * FROM tasks WHERE task_id = #{taskId}
+    </select>
+
+    <insert id="insert" parameterType="io.github.sztuwebclub.webcheckin.model.Task" useGeneratedKeys="true" keyProperty="taskId">
+        INSERT INTO tasks (task_name) VALUES (#{taskName})
+    </insert>
+
+    <update id="update" parameterType="io.github.sztuwebclub.webcheckin.model.Task">
+        UPDATE tasks SET task_name = #{taskName} WHERE task_id = #{taskId}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM tasks WHERE task_id = #{taskId}
+    </delete>
+</mapper>
